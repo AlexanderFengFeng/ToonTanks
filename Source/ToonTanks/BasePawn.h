@@ -19,8 +19,10 @@ protected:
 
 	void RotateTurret(FVector LookAtTarget);
 
+	void Fire();
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
-	float RotateInterpSpeed = 5.f;
+	float RotateInterpSpeed = 10.f;
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components", BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
