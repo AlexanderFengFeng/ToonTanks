@@ -40,5 +40,7 @@ private:
 		FVector NormalImpulse,
 		const FHitResult& Hit);
 
+	UPROPERTY(EditAnywhere)
+	float Damage = 50.f;
 
 };
