@@ -20,6 +20,9 @@ public:
 
 	bool IsGameActive() const { return bGameActive; }
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
+
 protected:
 
 	virtual void BeginPlay() override;

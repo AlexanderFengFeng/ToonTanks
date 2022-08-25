@@ -53,4 +53,5 @@ void AToonTanksGameMode::HandleGameStart()
         FTimerDelegate GameStartedTimerDelegate = FTimerDelegate::CreateUObject(this, &AToonTanksGameMode::SetGameActive, true);
         GetWorldTimerManager().SetTimer(GameStartedTimerHandle, GameStartedTimerDelegate, StartDelay, false);
     }
+    StartGame();
 }
