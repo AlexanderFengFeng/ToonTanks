@@ -4,6 +4,7 @@
 #include "Tower.h"
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
+#include "ToonTanksGameMode.h"
 #include "TimerManager.h"
 
 
@@ -19,6 +20,8 @@ void ATower::BeginPlay()
         &ATower::CheckFireCondition,
         FireRate,
         true);
+    ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this));
+
 }
 
 void ATower::Tick(float DeltaTime)
@@ -49,7 +52,7 @@ void ATower::CheckFireCondition()
 
 bool ATower::IsTankInFireRange()
 {
-    if (Tank && !Tank->IsHidden())
+    if (Tank && ToonTanksGameMode && ToonTanksGameMode->IsGameActive())
     {
         float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
         return Distance <= FireRange;

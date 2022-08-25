@@ -30,6 +30,7 @@ void UHealthComponent::BeginPlay()
 void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	UE_LOG(LogTemp, Warning, TEXT("%s"), ToonTanksGameMode->IsGameActive() ? TEXT("Yes") : TEXT("No"));
 
 	// ...
 }

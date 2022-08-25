@@ -18,6 +18,8 @@ public:
 
 	void ActorDied(AActor* DeadActor);
 
+	bool IsGameActive() const { return bGameActive;  }
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -25,6 +27,11 @@ protected:
 private:
 
 	class ATank* Tank;
+	class AToonTanksPlayerController* ToonTanksPlayerController;
 
+	float StartDelay = 3.f;
+	bool bGameActive;
 
+	void HandleGameStart();
+	void SetGameActive(bool bStarted) { bGameActive = bStarted;  }
 };
