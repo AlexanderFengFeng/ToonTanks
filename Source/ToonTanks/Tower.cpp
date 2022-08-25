@@ -32,6 +32,13 @@ void ATower::Tick(float DeltaTime)
 
 }
 
+void ATower::HandleDestruction()
+{
+    Super::HandleDestruction();
+    Destroy();
+}
+
+
 void ATower::CheckFireCondition()
 {
     if (IsTankInFireRange())
@@ -42,7 +49,7 @@ void ATower::CheckFireCondition()
 
 bool ATower::IsTankInFireRange()
 {
-    if (Tank)
+    if (Tank && !Tank->IsHidden())
     {
         float Distance = FVector::Dist(GetActorLocation(), Tank->GetActorLocation());
         return Distance <= FireRange;
