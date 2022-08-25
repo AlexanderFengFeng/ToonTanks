@@ -40,16 +40,17 @@ void AToonTanksGameMode::HandleGameStart()
     if (ToonTanksPlayerController)
     {
         ToonTanksPlayerController->SetPlayerEnabledState(false);
-        FTimerHandle TimerHandle;
+        FTimerHandle PlayerEnableTimerHandle;
         FTimerDelegate PlayerEnableTimerDelegate = FTimerDelegate::CreateUObject(
             ToonTanksPlayerController,
             &AToonTanksPlayerController::SetPlayerEnabledState,
             true);
-        GetWorldTimerManager().SetTimer(TimerHandle, PlayerEnableTimerDelegate,
+        GetWorldTimerManager().SetTimer(PlayerEnableTimerHandle, PlayerEnableTimerDelegate,
                                         StartDelay, false);
 
         // Set a timer to enable the active game state.
+        FTimerHandle GameStartedTimerHandle;
         FTimerDelegate GameStartedTimerDelegate = FTimerDelegate::CreateUObject(this, &AToonTanksGameMode::SetGameActive, true);
-        GetWorldTimerManager().SetTimer(TimerHandle, GameStartedTimerDelegate, StartDelay, false);
+        GetWorldTimerManager().SetTimer(GameStartedTimerHandle, GameStartedTimerDelegate, StartDelay, false);
     }
 }

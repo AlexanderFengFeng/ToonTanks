@@ -18,7 +18,7 @@ public:
 
 	void ActorDied(AActor* DeadActor);
 
-	bool IsGameActive() const { return bGameActive;  }
+	bool IsGameActive() const { return bGameActive; }
 
 protected:
 
