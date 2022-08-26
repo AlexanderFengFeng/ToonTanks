@@ -34,6 +34,7 @@ private:
 	class ATank* Tank;
 	class AToonTanksPlayerController* ToonTanksPlayerController;
 
+	UPROPERTY(EditAnywhere)
 	float StartDelay = 5.f;
 	bool bGameActive;
 
@@ -42,5 +43,4 @@ private:
 
 	int32 TargetTowers = 0;
 	int32 GetTargetTowerCount() const;
-
 };
