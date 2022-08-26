@@ -19,13 +19,15 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	UStaticMeshComponent* ProjectileMesh;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystemComponent* SmokeTrailParticleSystemComponent;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem* HitParticles;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float Damage = 50.f;
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
     class UProjectileMovementComponent* MovementComponent;
@@ -40,7 +42,10 @@ private:
 		FVector NormalImpulse,
 		const FHitResult& Hit);
 
-	UPROPERTY(EditAnywhere)
-	float Damage = 50.f;
+	void HandleDestruction();
 
+	FTimerHandle DestroyProjectileTimerHandle;
+
+	void DestroyDelegate() { Destroy(); }
+	float DestroyDelay = 3.f;
 };
