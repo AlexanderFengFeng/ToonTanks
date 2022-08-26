@@ -42,10 +42,8 @@ private:
 		FVector NormalImpulse,
 		const FHitResult& Hit);
 
-	void HandleDestruction();
-
 	FTimerHandle DestroyProjectileTimerHandle;
-
-	void DestroyDelegate() { Destroy(); }
 	float DestroyDelay = 3.f;
+	void HandleDestruction();
+	void DestroyDelegate() { Destroy(); }
 };
