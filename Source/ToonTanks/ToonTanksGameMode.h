@@ -22,6 +22,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
 
 protected:
 
@@ -37,4 +39,8 @@ private:
 
 	void HandleGameStart();
 	void SetGameActive(bool bStarted) { bGameActive = bStarted;  }
+
+	int32 TargetTowers = 0;
+	int32 GetTargetTowerCount() const;
+
 };
