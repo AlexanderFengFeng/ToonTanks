@@ -28,6 +28,10 @@ private:
 	UParticleSystem* HitParticles;
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = 50.f;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* LaunchSound;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
     class UProjectileMovementComponent* MovementComponent;
@@ -46,4 +50,5 @@ private:
 	float DestroyDelay = 3.f;
 	void HandleDestruction();
 	void DestroyDelegate() { Destroy(); }
+
 };
