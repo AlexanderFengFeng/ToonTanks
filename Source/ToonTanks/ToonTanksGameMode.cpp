@@ -18,6 +18,7 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 {
     if (DeadActor == Tank)
     {
+        SetGameActive(false);
         Tank->HandleDestruction();
         if (ToonTanksPlayerController)
         {
