@@ -23,7 +23,6 @@ ABasePawn::ABasePawn()
 
 void ABasePawn::HandleDestruction()
 {
-    // TODO: Visual/sound effects.
 	if (DeathParticles)
 	{
 	    UGameplayStatics::SpawnEmitterAtLocation(
@@ -32,6 +31,10 @@ void ABasePawn::HandleDestruction()
 	if (DeathSound)
 	{
 		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	}
+	if (DeathCameraShakeClass)
+	{
+		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 	}
 }
 

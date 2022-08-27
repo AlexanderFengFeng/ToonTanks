@@ -32,6 +32,8 @@ private:
 	USoundBase* LaunchSound;
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	USoundBase* HitSound;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<UCameraShakeBase> HitCameraShakeClass;
 
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
     class UProjectileMovementComponent* MovementComponent;
