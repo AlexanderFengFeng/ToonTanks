@@ -34,10 +34,14 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser)
 {
-	if (Damage <= 0.f) return;
-
+	if (Damage <= 0.f) {
+		return;
+	}
 	Health -= Damage;
-
+	if (Health < 0.f)
+	{
+		Health = 0.f;
+	}
 	if (Health <= 0.f && ToonTanksGameMode)
 	{
 		ToonTanksGameMode->ActorDied(DamagedActor);

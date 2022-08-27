@@ -19,12 +19,17 @@ public:
 
 protected:
 
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 	void RotateTurret(FVector LookAtTarget);
 
 	void Fire();
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float RotateInterpSpeed = 10.f;
+
+	bool bAlive = true;
 
 private:
 

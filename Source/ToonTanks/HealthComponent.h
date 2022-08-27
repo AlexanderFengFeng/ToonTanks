@@ -32,12 +32,16 @@ public:
 		AController* Instigator,
 		AActor* DamageCauser);
 
+	UFUNCTION(BlueprintCallable)
+	float GetHealthPercentage() const { return Health / MaxHealth; }
+
 private:
 
 	UPROPERTY(EditAnywhere)
 	float MaxHealth = 100.f;
-	float Health = 0.f;
+	UPROPERTY(EditAnywhere)
+	float Health = 100.f;
 
 	class AToonTanksGameMode* ToonTanksGameMode;
-
+		
 };

@@ -21,8 +21,17 @@ ABasePawn::ABasePawn()
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
 
+void ABasePawn::BeginPlay()
+{
+	Super::BeginPlay();
+	bAlive = true;
+}
+
 void ABasePawn::HandleDestruction()
 {
+	if (!bAlive) {
+		return;
+	}
 	if (DeathParticles)
 	{
 	    UGameplayStatics::SpawnEmitterAtLocation(
@@ -36,6 +45,11 @@ void ABasePawn::HandleDestruction()
 	{
 		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 	}
+	if (CapsuleComponent)
+	{
+		CapsuleComponent->Deactivate();
+	}
+	bAlive = false;
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)

@@ -13,7 +13,6 @@ void AToonTanksGameMode::BeginPlay()
     HandleGameStart();
 }
 
-
 void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 {
     if (DeadActor == Tank)

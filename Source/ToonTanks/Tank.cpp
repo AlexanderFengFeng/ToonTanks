@@ -41,7 +41,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-    if (TankPlayerController)
+    if (bAlive && TankPlayerController)
     {
         FHitResult HitResult;
         TankPlayerController->GetHitResultUnderCursor(
@@ -57,7 +57,6 @@ void ATank::HandleDestruction()
 {
     Super::HandleDestruction();
     SetActorHiddenInGame(true);
-    SetActorTickEnabled(false);
 }
 
 
